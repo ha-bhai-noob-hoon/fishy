@@ -133,7 +133,7 @@ function UserDashboard() {
       title: 'URL Copied!',
       description: 'Profile URL has been copied to clipboard.',
     });
-    router.replace('/dashboard');
+    router.replace(profileUrl);
     
   };
 
