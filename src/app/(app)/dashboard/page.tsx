@@ -15,6 +15,7 @@ import { useSession } from 'next-auth/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AcceptMessageSchema } from '@/schemas/acceptMessageSchema';
+import { useRouter } from 'next/navigation';
 
 function UserDashboard() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -22,6 +23,7 @@ function UserDashboard() {
   const [isSwitchLoading, setIsSwitchLoading] = useState(false);
 
   const { toast } = useToast();
+  const router = useRouter();
 
   const handleDeleteMessage = (messageId: string) => {
     setMessages(messages.filter((message) => message._id !== messageId));
@@ -131,6 +133,8 @@ function UserDashboard() {
       title: 'URL Copied!',
       description: 'Profile URL has been copied to clipboard.',
     });
+    router.replace('/dashboard');
+    
   };
 
   return (
